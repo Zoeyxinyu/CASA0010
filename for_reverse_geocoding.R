@@ -1,0 +1,26 @@
+library(spatstat)
+library(here)
+library(sp)
+library(rgeos)
+library(maptools)
+library(GISTools)
+library(tmap)
+library(sf)
+library(geojson)
+library(geojsonio)
+library(tmaptools)
+library(ggplot2)
+library(RColorBrewer)
+library(classInt)
+library(rgeos)
+library(rgdal)
+library(tidyverse)
+library(janitor)
+library(geojsonR)
+
+shop <- st_read("mergedfile1.geojson")
+
+for_reverse_geocoding <- shop %>% 
+  filter(is.na(addr_street))
+st_write(for_reverse_geocoding,"for_reverse_geocoding.geojson",driver = "GeoJSON")
+  
